@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Anual de Desenvolvimento de Pessoas Diversas | DiverCidade + Globo</title>
+    <meta name="description"
+        content="Proposta Comercial DiverCidade para Globo - Programa Anual de Desenvolvimento de Pessoas Diversas">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* DiverCidade brand colors */
+            --divercidade-primary: #E91E8C;
+            --divercidade-orange: #FF6B35;
+            --divercidade-yellow: #FFD23F;
+            --divercidade-green: #00C9A7;
+            --divercidade-blue: #4361EE;
+            --divercidade-purple: #7B2CBF;
+
+            /* Backwards-compatible color tokens */
+            --color-primary-dark: #c31575;
+            --color-secondary: var(--divercidade-orange);
+            --color-accent: var(--divercidade-orange);
+            --color-danger: #EA4335;
+            --color-purple: var(--divercidade-purple);
+            --color-orange: var(--divercidade-orange);
+
+            /* Light mode defaults */
+            --color-text-primary: #212121;
+            --color-text-secondary: #5F6368;
+            --color-text-light: #FFFFFF;
+
+            --color-bg-primary: #FFFFFF;
+            --color-bg-secondary: #F5F5F5;
+            --color-bg-tertiary: #FFEFF6;
+
+            --color-border: #E0E0E0;
+
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 48px;
+
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.28s ease;
+            --transition-slow: 0.45s ease;
+        }
+
+        /* Dark mode overrides */
+        body.dark {
+            --color-bg-primary: #121212;
+            --color-bg-secondary: #1E1E1E;
+            --color-bg-tertiary: #2A2A3E;
+
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #E8E8E8;
+            --color-text-light: #FFFFFF;
+
+            --color-border: rgba(255, 255, 255, 0.2);
+
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
+            --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        body.dark a { color: #64B5F6; }
+        body.dark a:hover { color: #90CAF9; }
+        body.dark strong, body.dark b { color: #FFFFFF; font-weight: 700; }
+        body.dark .nav-link { color: #E8E8E8; }
+        body.dark .nav-link:hover, body.dark .nav-link.active { color: #90CAF9; }
+        body.dark table th { background-color: #1E1E1E; color: #FFFFFF; }
+        body.dark table td { color: #D0D0D0; }
+        body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 { color: #FFFFFF; }
+        body.dark .section-subtitle { color: #D0D0D0; }
+        body.dark .card, body.dark .package-card, body.dark .kpi-card { background-color: #1E1E1E; border-color: rgba(255, 255, 255, 0.15); }
+        body.dark .highlight-box { background: linear-gradient(135deg, rgba(100, 181, 246, 0.12) 0%, rgba(233, 30, 140, 0.1) 100%); border-left-color: #64B5F6; }
+        body.dark li { color: #E8E8E8; }
+        body.dark .btn-outline { border-color: #64B5F6; color: #90CAF9; }
+        body.dark .btn-outline:hover { background-color: rgba(100, 181, 246, 0.15); }
+        body.dark a.btn-primary { color: #FFFFFF; }
+        body.dark .accordion-header { color: #FFFFFF; background-color: rgba(255, 255, 255, 0.03); }
+        body.dark .accordion-header:hover { background-color: rgba(255, 255, 255, 0.06); }
+        body.dark .accordion-content { color: #E8E8E8; }
+        body.dark .timeline-title { color: #FFFFFF; }
+        body.dark .timeline-description { color: #D0D0D0; }
+        body.dark .timeline-date { color: #90CAF9; }
+        body.dark .footer-description { color: #D0D0D0; }
+        body.dark .footer-links a { color: var(--divercidade-primary); opacity: 1; }
+        body.dark .footer-links a:hover { color: var(--divercidade-primary); opacity: 0.8; filter: brightness(1.2); }
+        body.dark table th { background-color: #242424; color: #FFFFFF; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+        body.dark table td { color: #E8E8E8; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        body.dark table tr:hover { background-color: rgba(255, 255, 255, 0.04); }
+        body.dark .badge { background-color: rgba(255, 255, 255, 0.1); color: #E8E8E8; }
+        body.dark .badge-info { background-color: rgba(233, 30, 140, 0.15); color: #FF6EC7; }
+        body.dark .package-card { border-color: rgba(255, 255, 255, 0.12); }
+        body.dark .package-card.featured { border-color: #FF6EC7; background: linear-gradient(135deg, rgba(255, 110, 199, 0.08) 0%, transparent 100%); }
+        body.dark .package-price { color: #90CAF9; }
+        body.dark .package-description { color: #D0D0D0; }
+
+        body, .nav, .card, .kpi-card, .chart-container, .table-container, .package-card, .team-card, .footer, .highlight-box, .timeline, .badge, .objective-card, .phase-card {
+            transition: background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        /* ===== PHASE CARDS ===== */
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .phase-card {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .phase-card:nth-child(1)::before { background: #E91E63; }
+        .phase-card:nth-child(2)::before { background: #FF9800; }
+        .phase-card:nth-child(3)::before { background: #2196F3; }
+        .phase-card:nth-child(4)::before { background: #4CAF50; }
+
+        .phase-number {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #E91E63, #FF9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .phase-card h4 {
+            font-size: 16px;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-primary);
+        }
+
+        .phase-card p {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        body.dark .phase-card { background: #1E1E1E; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background: var(--color-bg-secondary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--color-bg-primary);
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+            transition: var(--transition-normal);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--spacing-xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: var(--spacing-md);
+            text-decoration: none; color: var(--divercidade-primary);
+            font-weight: 700; font-size: 20px;
+        }
+        .nav-logo img { height: 44px; width: auto; object-fit: contain; }
+        .nav-menu { display: flex; gap: var(--spacing-lg); list-style: none; }
+        .nav-link {
+            text-decoration: none; color: var(--color-text-secondary);
+            font-weight: 500; padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md); transition: var(--transition-fast);
+            font-size: 14px;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--divercidade-primary);
+            background: linear-gradient(90deg, rgba(233, 30, 140, 0.06), rgba(255, 107, 53, 0.03));
+        }
+        .nav-toggle {
+            display: none; flex-direction: column; gap: 4px;
+            cursor: pointer; padding: var(--spacing-sm);
+        }
+        .nav-toggle span {
+            width: 24px; height: 2px;
+            background: var(--color-text-primary);
+            transition: var(--transition-fast);
+        }
+
+        .theme-toggle {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            cursor: pointer; background: transparent; border: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 8px; border-radius: 8px; color: var(--color-text-primary);
+            transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+        }
+        .theme-toggle .fa-sun, .theme-toggle .fa-moon { font-size: 16px; }
+        .theme-toggle .fa-moon { display: none; }
+        body.dark .theme-toggle .fa-moon { display: inline-block; }
+        body.dark .theme-toggle .fa-sun { display: none; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--divercidade-primary) 0%, var(--divercidade-orange) 100%);
+            color: var(--color-text-light);
+            padding: 160px var(--spacing-xl) var(--spacing-xxl);
+            position: relative; overflow: hidden;
+        }
+        body.dark .hero {
+            background: linear-gradient(135deg, var(--divercidade-primary) 0%, var(--divercidade-orange) 100%);
+            color: var(--color-text-light);
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .hero-content { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-logo { position: absolute; right: var(--spacing-xl); top: calc(var(--spacing-md) + 8px); z-index: 2; height: 56px; width: auto; display: block; }
+        .hero-badge {
+            display: inline-block; background: rgba(255, 255, 255, 0.18);
+            padding: var(--spacing-sm) var(--spacing-md); border-radius: 50px;
+            font-size: 14px; font-weight: 500; margin-bottom: var(--spacing-lg);
+            animation: fadeInDown 0.8s ease;
+        }
+        .hero-title { font-size: 48px; font-weight: 700; margin-bottom: var(--spacing-md); line-height: 1.2; animation: fadeInUp 0.8s ease 0.2s both; }
+        .hero-subtitle { font-size: 20px; opacity: 0.95; margin-bottom: var(--spacing-xl); max-width: 700px; animation: fadeInUp 0.8s ease 0.4s both; }
+        .hero-stats { display: flex; gap: var(--spacing-xl); margin-top: var(--spacing-xxl); flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.6s both; }
+        .hero-stat { text-align: center; }
+        .hero-stat-value { font-size: 36px; font-weight: 700; }
+        .hero-stat-label { font-size: 14px; opacity: 0.9; }
+
+        /* Sections */
+        .section { padding: var(--spacing-xxl) var(--spacing-xl); max-width: 1400px; margin: 0 auto; }
+        .section-header { margin-bottom: var(--spacing-xl); animation: fadeInUp 0.6s ease; }
+        .section-number {
+            display: inline-block; background: var(--divercidade-primary); color: white;
+            width: 32px; height: 32px; border-radius: 50%; text-align: center;
+            line-height: 32px; font-size: 14px; font-weight: 700; margin-right: var(--spacing-md);
+        }
+        .section-title { font-size: 32px; font-weight: 700; color: var(--color-text-primary); margin-bottom: var(--spacing-sm); }
+        .section-subtitle { font-size: 18px; color: var(--color-text-secondary); }
+
+        /* Cards */
+        .card {
+            background: var(--color-bg-primary); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md); padding: var(--spacing-xl);
+            transition: var(--transition-normal); animation: fadeInUp 0.6s ease;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+        /* Grid Layouts */
+        .grid { display: grid; gap: var(--spacing-lg); }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto; border-radius: var(--radius-lg);
+            background: var(--color-bg-primary); box-shadow: var(--shadow-sm);
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; color: var(--color-text-primary); }
+        th { background: var(--color-bg-tertiary); padding: var(--spacing-md); text-align: left; font-weight: 600; color: var(--color-text-primary); white-space: nowrap; }
+        td { padding: var(--spacing-md); border-bottom: 1px solid var(--color-border); color: var(--color-text-primary); }
+        tr:hover { background: var(--color-bg-secondary); }
+        tr:last-child td { border-bottom: none; }
+
+        /* Charts Container */
+        .chart-container {
+            background: var(--color-bg-primary); border-radius: var(--radius-lg);
+            padding: var(--spacing-xl); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-lg);
+        }
+        .chart-title { font-size: 18px; font-weight: 600; margin-bottom: var(--spacing-lg); color: var(--color-text-primary); }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 40px; }
+        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: var(--color-border); }
+        .timeline-item { position: relative; padding-bottom: var(--spacing-xl); animation: fadeInUp 0.6s ease; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -33px; top: 4px; width: 16px; height: 16px;
+            border-radius: 50%; background: var(--divercidade-primary); border: 3px solid var(--color-bg-primary);
+        }
+        .timeline-date { font-size: 14px; color: var(--divercidade-primary); font-weight: 600; margin-bottom: var(--spacing-xs); }
+        .timeline-title { font-size: 16px; font-weight: 600; margin-bottom: var(--spacing-xs); color: var(--color-text-primary); }
+        .timeline-description { font-size: 14px; color: var(--color-text-secondary); }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl); border-radius: var(--radius-md);
+            font-weight: 600; font-size: 14px; cursor: pointer; transition: var(--transition-fast);
+            border: none; text-decoration: none;
+        }
+        .btn-primary { background: var(--divercidade-primary); color: white; }
+        .btn-primary:hover { background: var(--color-primary-dark); transform: translateY(-2px); }
+        .btn-secondary { background: var(--divercidade-orange); color: white; }
+        .btn-outline { background: transparent; border: 2px solid var(--divercidade-primary); color: var(--divercidade-primary); }
+        .btn-outline:hover { background: rgba(233, 30, 140, 0.06); }
+
+        /* Accordion */
+        .accordion { background: var(--color-bg-primary); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+        .accordion-item { border-bottom: 1px solid var(--color-border); }
+        .accordion-item:last-child { border-bottom: none; }
+        .accordion-header {
+            padding: var(--spacing-lg); cursor: pointer; display: flex; justify-content: space-between;
+            align-items: center; font-weight: 600; transition: var(--transition-fast); color: var(--color-text-primary);
+        }
+        .accordion-header:hover { background: var(--color-bg-secondary); }
+        .accordion-header i { transition: var(--transition-normal); }
+        .accordion-header.active i { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height var(--transition-normal); color: var(--color-text-primary); }
+        .accordion-content.active { max-height: 1000px; }
+        .accordion-body { padding: 0 var(--spacing-lg) var(--spacing-lg); }
+
+        /* Footer */
+        .footer { background: var(--color-bg-primary); color: var(--color-text-secondary); padding: var(--spacing-xxl) var(--spacing-xl) var(--spacing-xl); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--spacing-xxl); }
+        .footer-brand { font-size: 24px; font-weight: 700; margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: var(--spacing-md); color: var(--divercidade-primary); }
+        .footer-brand img { height: 36px; width: auto; object-fit: contain; }
+        .footer-description { font-size: 14px; opacity: 0.8; margin-bottom: var(--spacing-lg); line-height: 1.7; color: var(--color-text-secondary); }
+        .footer-title { font-size: 16px; font-weight: 600; margin-bottom: var(--spacing-md); color: var(--color-text-primary); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: var(--spacing-sm); }
+        .footer-links a { color: var(--divercidade-primary); opacity: 0.85; text-decoration: none; font-size: 14px; transition: var(--transition-fast); font-weight: 500; }
+        .footer-links a:hover { opacity: 1; text-decoration: underline; }
+        .footer-bottom { max-width: 1400px; margin: var(--spacing-xxl) auto 0; padding-top: var(--spacing-xl); border-top: 1px solid rgba(0, 0, 0, 0.06); display: flex; justify-content: space-between; align-items: center; font-size: 14px; opacity: 0.8; color: var(--color-text-secondary); }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-bg-primary); flex-direction: column; padding: var(--spacing-md); box-shadow: var(--shadow-md); }
+            .nav-menu.active { display: flex; }
+            .nav-toggle { display: flex; }
+            .hero { padding: 120px var(--spacing-lg) var(--spacing-xl); }
+            .hero-title { font-size: 32px; }
+            .hero-logo { position: static; display: block; margin-bottom: var(--spacing-md); height: 48px; }
+            .section { padding: var(--spacing-xl) var(--spacing-lg); }
+            .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: var(--spacing-xl); }
+            .footer-bottom { flex-direction: column; gap: var(--spacing-md); text-align: center; }
+        }
+
+        /* Progress Bar */
+        .progress-container { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--color-border); z-index: 1001; }
+        .progress-bar { height: 100%; background: var(--divercidade-orange); width: 0%; transition: width 0.1s ease; }
+        section[id] { scroll-margin-top: 80px; }
+
+        /* Highlight Box */
+        .highlight-box { background: linear-gradient(135deg, rgba(255, 235, 245, 0.5) 0%, rgba(255, 240, 230, 0.7) 100%); border-radius: var(--radius-lg); padding: var(--spacing-xl); border-left: 4px solid var(--divercidade-primary); margin: var(--spacing-lg) 0; }
+        body.dark .highlight-box { background: linear-gradient(135deg, rgba(233, 30, 140, 0.03) 0%, rgba(255, 107, 53, 0.02) 100%); border-left-color: rgba(233, 30, 140, 0.9); }
+        .highlight-box-title { font-weight: 600; margin-bottom: var(--spacing-sm); display: flex; align-items: center; gap: var(--spacing-sm); color: var(--color-text-primary); }
+
+        /* Step Number */
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--divercidade-primary); color: white; font-weight: 700; margin-right: var(--spacing-md); flex-shrink: 0; }
+
+        /* Calculator Styles */
+        .calculator-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-lg); align-items: start; margin-bottom: var(--spacing-xl); }
+        .phases-fixed, .phases-variable { margin-bottom: var(--spacing-md); }
+        .phases-fixed h3, .phases-variable h3 { display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); color: var(--divercidade-primary); font-size: 1.125rem; }
+        .phase-item { display: flex; justify-content: space-between; align-items: center; padding: calc(var(--spacing-sm) + 4px); background: var(--color-bg-secondary); border-radius: var(--radius-lg); margin-bottom: var(--spacing-sm); }
+        .phase-price { font-weight: 700; color: var(--divercidade-primary); }
+        .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); }
+        .module-card { background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-md); transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+        .module-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--divercidade-primary); }
+        .module-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-sm); }
+        .module-header strong { display: block; font-size: 0.95rem; }
+        .module-price { font-size: 0.85rem; color: var(--color-text-secondary); }
+        .module-controls { display: flex; align-items: center; gap: var(--spacing-sm); }
+        .module-btn { width: 36px; height: 36px; border-radius: 9999px; border: 1px solid var(--color-border); background: transparent; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .module-count { font-weight: 700; min-width: 28px; text-align: center; display: inline-block; }
+        .module-total { margin-left: auto; font-weight: 700; color: var(--divercidade-primary); }
+        .summary-card { padding: var(--spacing-lg); text-align: left; }
+        .summary-logo { height: 40px; margin-bottom: var(--spacing-sm); display: block; }
+        .summary-row { display: flex; justify-content: space-between; color: var(--color-text-secondary); margin-bottom: var(--spacing-sm); }
+        .summary-divider { height: 1px; background: var(--color-border); margin: 1rem 0; }
+        .summary-total { background: linear-gradient(90deg, var(--divercidade-primary), var(--divercidade-orange)); color: white; padding: var(--spacing-md); border-radius: var(--radius-lg); margin-bottom: var(--spacing-md); text-align: center; }
+        .summary-total span:first-child { display: block; font-size: 12px; opacity: 0.9; }
+        .summary-total span:last-child { font-size: 20px; font-weight: 900; }
+        .summary-note { font-size: 12px; color: var(--color-text-secondary); margin-top: var(--spacing-sm); }
+        .btn-block { display: block; width: 100%; margin-bottom: var(--spacing-sm); }
+        @media (max-width: 900px) { .calculator-grid { grid-template-columns: 1fr; } .modules-grid { grid-template-columns: 1fr; } }
+
+        /* ===== EXPANDABLE MEMBER CARDS ===== */
+        .member-body {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.42s ease;
+        }
+        .member-body.open {
+            max-height: 800px;
+        }
+        .member-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: var(--spacing-md);
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--divercidade-primary);
+            background: transparent;
+            border: 1.5px solid var(--divercidade-primary);
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: background var(--transition-fast), color var(--transition-fast);
+        }
+        .member-toggle-btn:hover {
+            background: var(--divercidade-primary);
+            color: #fff;
+        }
+        .member-toggle-btn i {
+            transition: transform var(--transition-normal);
+        }
+        .member-toggle-btn.open i {
+            transform: rotate(180deg);
+        }
+        body.dark .member-toggle-btn {
+            border-color: var(--divercidade-primary);
+            color: var(--divercidade-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="assets/images/logo-divercidade.png" alt="DiverCidade Logo">
+                <span>DiverCidade</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#sumario" class="nav-link active">Resumo</a></li>
+                <li><a href="#contexto" class="nav-link">Contexto</a></li>
+                <li><a href="#objetivos" class="nav-link">Objetivos</a></li>
+                <li><a href="#perfil" class="nav-link">Públicos</a></li>
+                <li><a href="#etapas" class="nav-link">Etapas</a></li>
+                <li><a href="#arquitetura" class="nav-link">Arquitetura</a></li>
+                <li><a href="#equipe" class="nav-link">Equipe</a></li>
+                <li><a href="#investimento" class="nav-link">Investimento</a></li>
+                <li><a href="#proximos-passos" class="nav-link">Próximos Passos</a></li>
+            </ul>
+
+            <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Alternar tema claro/escuro" title="Alternar tema claro/escuro">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <div class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <img class="hero-logo" src="assets/images/logo-divercidade.png" alt="DiverCidade Logo">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-calendar-alt"></i>
+                Programa 2026-2027 | Globo + DiverCidade (Versão 5)
+            </div>
+            <h1 class="hero-title">Programa Anual de Desenvolvimento de Pessoas Diversas</h1>
+            <p class="hero-subtitle">
+                Integração ao Programa de Mentoria | Duração: 12 meses<br>
+                Preparar profissionais diversos para novos desafios de carreira e ampliação de responsabilidade por meio de um programa anual estruturado, que integra leitura de contexto organizacional, desenvolvimento coletivo orientado a carreira, mentorias individuais e sustentação dos aprendizados nos sistemas da organização.
+            </p>
+            <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-xl);">
+                <a href="#investimento" class="btn btn-primary">
+                    <i class="fas fa-eye"></i>
+                    Ver Investimento
+                </a>
+                <a href="#proximos-passos" class="btn btn-outline" style="border-color: rgba(255,255,255,0.85); color: white;">
+                    <i class="fas fa-rocket"></i>
+                    Próximos Passos
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">180</div>
+                    <div class="hero-stat-label">Participantes</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">12</div>
+                    <div class="hero-stat-label">Meses de Programa</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">95%</div>
+                    <div class="hero-stat-label">Meta de Retenção</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">6</div>
+                    <div class="hero-stat-label">Jornadas</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sumário Executivo Section -->
+    <section class="section" id="sumario">
+        <div class="section-header">
+            <span class="section-number">1</span>
+            <h2 class="section-title">Sumário Executivo</h2>
+            <p class="section-subtitle">Visão geral da proposta comercial</p>
+        </div>
+        <div class="card animate-on-scroll" style="border-left: 4px solid var(--divercidade-primary);">
+            <p style="margin-bottom: var(--spacing-md);">Apresentamos um <strong>Programa Anual de Desenvolvimento de Pessoas Diversas</strong> desenhado para preparar profissionais para novos desafios de carreira e ampliação de responsabilidade, ao mesmo tempo em que fortalece capacidades de liderança e retenção ao longo do tempo.</p>
+            <p style="margin-bottom: var(--spacing-md);">O programa integra desenvolvimento coletivo orientado a carreira, formação de pessoas mentoras e preparação de gestores. Além disto, trazemos a opção de módulos de leitura profunda de contexto organizacional e mecanismos de consolidação, atuando não apenas no indivíduo, mas também nos processos que sustentam decisões de desenvolvimento dentro da organização.</p>
+            <p>A proposta a seguir apresenta de forma estruturada o escopo do programa, seus entregáveis, indicadores de sucesso, cronograma de execução e modelo de investimento.</p>
+        </div>
+        <div class="chart-container animate-on-scroll" style="margin-top: var(--spacing-xl);">
+            <h4 class="chart-title">
+                <i class="fas fa-chart-pie"></i>
+                Distribuição de Participantes por Jornada (Total 180)
+            </h4>
+            <canvas id="participantsChart" style="max-height: 300px;"></canvas>
+        </div>
+    </section>
+
+    <!-- Contexto Section -->
+    <section class="section" id="contexto">
+        <div class="section-header">
+            <span class="section-number">2</span>
+            <h2 class="section-title">Contexto</h2>
+            <p class="section-subtitle">A Globo no Ciclo 4 do programa de mentoria</p>
+        </div>
+        <div class="card animate-on-scroll">
+            <p style="margin-bottom: var(--spacing-md);">A Globo inicia o <strong>Ciclo 4 de seu Programa de Mentoria</strong>, ampliando o escopo para novas frentes de diversidade, como <strong>pessoas com deficiência</strong> e <strong>pessoas LGBTQIAPN+</strong>, somando-se à experiência construída nos ciclos anteriores.</p>
+            <p style="margin-bottom: var(--spacing-md);">Ao longo dos três primeiros ciclos, a organização desenvolveu um repertório consistente de aprendizagem com cerca de <strong>180 participantes</strong>, distribuídos em grupos estratégicos como Liderança (gerentes), Mulheres (especialistas e coordenadoras), Pessoas Negras (especialistas, coordenadores e analistas sêniores) e iniciativas ligadas a inovação e IA, envolvendo profissionais de diferentes níveis de responsabilidade.</p>
+            <p style="margin-bottom: var(--spacing-md);">Este novo programa se posiciona como <strong>parceiro estratégico para aprofundar, organizar e sustentar essa jornada</strong>, partindo do reconhecimento de que trajetórias profissionais não se desenvolvem apenas por competência técnica, mas pela combinação entre contexto, decisões, oportunidades reais e sistemas que viabilizam (ou limitam) o crescimento.</p>
+            <p>Ao tratar diversidade como uma lente de leitura, e não como conteúdo isolado, o programa busca ampliar a qualidade das decisões de desenvolvimento e criar condições mais consistentes para que diferentes perfis possam contribuir de forma plena e sustentável ao longo de suas carreiras.</p>
+        </div>
+    </section>
+
+    <!-- Objetivos Section -->
+    <section class="section" id="objetivos">
+        <div class="section-header">
+            <span class="section-number">3</span>
+            <h2 class="section-title">Objetivos do Programa de Mentoria e Desenvolvimento de Carreira</h2>
+        </div>
+        <div class="card animate-on-scroll" style="margin-bottom: var(--spacing-xl); border-left: 4px solid var(--divercidade-orange);">
+            <h3 style="margin-bottom: var(--spacing-sm); color: var(--divercidade-orange);">Objetivo Geral do Programa</h3>
+            <p>Preparar profissionais para novos desafios de carreira e ampliação de responsabilidade por meio de um <strong>programa anual estruturado</strong>, que combina leitura profunda de contexto organizacional, desenvolvimento orientado a carreira, acompanhamento contínuo e consolidação de práticas sustentáveis, garantindo alinhamento entre pessoas, lideranças e os sistemas que sustentam as decisões de desenvolvimento.</p>
+            <p style="margin-top: var(--spacing-sm); font-size: 14px; color: var(--color-text-secondary);">O programa reconhece que trajetórias profissionais não se constroem apenas a partir de competências técnicas, mas a partir da capacidade de compreender o contexto, tomar decisões conscientes e sustentar escolhas ao longo do tempo, tanto no nível individual quanto organizacional.</p>
+        </div>
+        
+        <h3 style="margin-bottom: var(--spacing-lg);">Objetivos por Público</h3>
+        <div class="grid grid-2" style="gap: var(--spacing-lg);">
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <i class="fas fa-user-graduate"></i> Pessoas Mentoradas
+                </h4>
+                <p style="font-size: 14px; font-weight: 600; margin-bottom: var(--spacing-sm);">Desenvolvimento de Carreira e Preparação para Novos Desafios</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">Preparar pessoas mentoradas para assumir novos desafios de carreira e ampliar níveis de responsabilidade, fortalecendo a clareza sobre sua trajetória profissional, capacidade de tomada de decisão, posicionamento no ambiente organizacional e leitura do contexto em que estão inseridos.</p>
+                <ul style="font-size: 13px; list-style: none;">
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Compreender seu momento de carreira</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Tomar decisões mais conscientes e estratégicas</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Desenvolver posicionamento profissional</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Ler regras formais e informais</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Sustentar escolhas sem comprometer saúde/identidade</li>
+                </ul>
+            </div>
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <i class="fas fa-hands-helping"></i> Pessoas Mentoras
+                </h4>
+                <p style="font-size: 14px; font-weight: 600; margin-bottom: var(--spacing-sm);">Qualificação do Papel de Apoio e Orientação</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">Qualificar a atuação das pessoas mentoras para que exerçam seu papel com responsabilidade, escuta qualificada e leitura sistêmica, apoiando decisões de carreira de forma ética, contextualizada e alinhada à realidade organizacional.</p>
+                <ul style="font-size: 13px; list-style: none;">
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Clareza sobre limites e impactos do papel</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Escuta profunda e perguntas que ampliam consciência</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Leitura de contexto e avaliação de riscos</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Apoiar desenvolvimento sem gerar dependência</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Sustentabilidade emocional ao longo do tempo</li>
+                </ul>
+            </div>
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <i class="fas fa-user-tie"></i> Pessoas Gestoras
+                </h4>
+                <p style="font-size: 14px; font-weight: 600; margin-bottom: var(--spacing-sm);">Decisão, Desenvolvimento e Impacto</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">Fortalecer as lideranças para exercer decisões de desenvolvimento, avaliação, movimentação e promoção com maior clareza de critérios, responsabilidade humana e coerência entre discurso, prática e impacto.</p>
+                <ul style="font-size: 13px; list-style: none;">
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Critérios mais claros para avaliação</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Feedbacks estruturados orientados a crescimento</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Decisões de promoção com responsabilidade</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Gerir conflitos e expectativas em equipes diversas</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Sustentar performance sem gerar adoecimento</li>
+                </ul>
+            </div>
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <i class="fas fa-cogs"></i> Pessoas Responsáveis pelos Processos (RH)
+                </h4>
+                <p style="font-size: 14px; font-weight: 600; margin-bottom: var(--spacing-sm);">Sistemas Mais Coerentes e Sustentáveis</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">Capacitar para desenhar, revisar e sustentar processos mais claros e alinhados à estratégia, utilizando inteligência de diversidade aplicada como ferramenta para redução de vieses e riscos sistêmicos.</p>
+                <ul style="font-size: 13px; list-style: none;">
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Identificar pontos de viés e subjetividade</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Revisar critérios, linguagem e fluxos decisórios</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Tornar processos claros, rastreáveis e auditáveis</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Alinhar políticas e práticas ao discurso</li>
+                    <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> Monitorar impactos reais nas trajetórias</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfil Section -->
+    <section class="section" id="perfil">
+        <div class="section-header">
+            <span class="section-number">4</span>
+            <h2 class="section-title">Sobre o perfil de Pessoas Mentoradas</h2>
+            <p class="section-subtitle">Diferenciação por Nível Hierárquico</p>
+        </div>
+        <div class="card animate-on-scroll" style="margin-bottom: var(--spacing-xl);">
+            <p>Reconhecendo a realidade organizacional da Globo, o programa adapta sua abordagem e conteúdo conforme o nível hierárquico dos participantes:</p>
+        </div>
+        <div class="accordion animate-on-scroll">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>Para Gerentes e Líderes</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p style="margin-bottom: var(--spacing-md);"><strong>Foco em: Maturidade Executiva e Alta Performance Sustentável</strong></p>
+                        <ul style="font-size: 14px; list-style: none;">
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Construção de ambientes de alta performance baseados em confiança, clareza estratégica e accountability</li>
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Desenvolvimento de segurança psicológica como impulsionador de inovação</li>
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Identificação e mitigação de vieses que impactam decisões críticas e promoções</li>
+                        </ul>
+                        <p style="font-size: 14px; margin-top: var(--spacing-md);"><strong>Evolução Executiva:</strong> Gestão estratégica de pessoas, delegação estruturada, feedback de alta qualidade, planejamento sucessório e influência estratégica.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>Para Especialistas e Coordenadores</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p style="margin-bottom: var(--spacing-md);"><strong>Foco em: Visibilidade Estratégica, Consolidação Técnica e Crescimento de Carreira</strong></p>
+                        <ul style="font-size: 14px; list-style: none;">
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Desenvolvimento de posicionamento profissional com segurança e autenticidade</li>
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Construção de marca profissional alinhada a resultados e geração de valor</li>
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Navegação estratégica entre trilhas técnicas e gerenciais</li>
+                        </ul>
+                        <p style="font-size: 14px; margin-top: var(--spacing-md);"><strong>Evolução Profissional:</strong> Planejamento estruturado de carreira, negociação de responsabilidades, preparação para promoções e gestão de influência sem autoridade formal.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>Para Analistas e Profissionais em Desenvolvimento</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p style="margin-bottom: var(--spacing-md);"><strong>Foco em: Consolidação de Competências e Aceleração de Carreira</strong></p>
+                        <ul style="font-size: 14px; list-style: none;">
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Identificação e desenvolvimento do próprio potencial com foco em resultados</li>
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Construção de visibilidade profissional baseada em entrega e consistência</li>
+                            <li style="padding: var(--spacing-xs) 0;"><i class="fas fa-circle" style="font-size: 8px; color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i> Preparação estruturada para assumir maiores responsabilidades</li>
+                        </ul>
+                        <p style="font-size: 14px; margin-top: var(--spacing-md);"><strong>Evolução Profissional:</strong> Autoconhecimento aplicado, leitura e uso de feedback, planejamento de carreira a longo prazo e gestão de prioridades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Etapas Section -->
+    <section class="section" id="etapas">
+        <div class="section-header">
+            <span class="section-number">5</span>
+            <h2 class="section-title">Metodologia, Etapas do Programa e Entregáveis</h2>
+            <p class="section-subtitle">Quatro etapas integradas ao longo de 12 meses</p>
+        </div>
+        <div class="phases-grid animate-on-scroll">
+            <div class="phase-card">
+                <div class="phase-number">01</div>
+                <h4>Leitura de Contexto (Opcional)</h4>
+                <p>Diagnóstico profundo das experiências e dinâmicas organizacionais (Mês 1).</p>
+            </div>
+            <div class="phase-card">
+                <div class="phase-number">02</div>
+                <h4>Desenvolvimento Coletivo</h4>
+                <p>Criação de repertório e capacidade de decisão por meio de encontros (Meses 2-9).</p>
+            </div>
+            <div class="phase-card">
+                <div class="phase-number">03</div>
+                <h4>Consolidação e Avaliação (Opcional)</h4>
+                <p>Transformação de experiência em evidência e dados estratégicos (Meses 10-11).</p>
+            </div>
+            <div class="phase-card">
+                <div class="phase-number">04</div>
+                <h4>Sustentação (Opcional)</h4>
+                <p>Transformação de aprendizados em práticas e governança (Contínua).</p>
+            </div>
+        </div>
+        
+        <div class="card animate-on-scroll" style="margin-top: var(--spacing-xl);">
+            <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md);">Fase 2 — Preparação e Formação</h3>
+            <p style="font-size: 14px; margin-bottom: var(--spacing-lg);">A Fase 2 concentra os encontros coletivos de desenvolvimento. A organização escolhe o formato, o ritmo e as turmas.</p>
+            
+            <div class="grid grid-3" style="gap: var(--spacing-md);">
+                <div style="background: var(--color-bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                    <h4 style="font-size: 14px; margin-bottom: var(--spacing-xs);">Formação de Pessoas Mentoras (≈164)</h4>
+                    <p style="font-size: 13px; color: var(--color-text-secondary);">2 turmas híbridas (presencial RJ + Teams). Foco em escuta, limites e leitura de contexto.</p>
+                </div>
+                <div style="background: var(--color-bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                    <h4 style="font-size: 14px; margin-bottom: var(--spacing-xs);">Preparação Mentoradas (180)</h4>
+                    <p style="font-size: 13px; color: var(--color-text-secondary);">Opção A: Módulos gravados (até 3h) OU Opção B: 2 turmas híbridas.</p>
+                </div>
+                <div style="background: var(--color-bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                    <h4 style="font-size: 14px; margin-bottom: var(--spacing-xs);">Preparação de Lideranças (≈240)</h4>
+                    <p style="font-size: 13px; color: var(--color-text-secondary);">2 webinars via Teams + material de apoio. Foco em roteiros de feedback e critérios.</p>
+                </div>
+            </div>
+            
+            <h4 style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md);">Orientações de Comunicação e Tom</h4>
+            <p style="font-size: 14px; margin-bottom: var(--spacing-md);">O programa utiliza <strong>diversidade como lente analítica</strong>, nunca como conteúdo educativo ou de letramento sobre identidades. Abordagem positiva orientada a:</p>
+            <ul style="font-size: 13px; list-style: none; margin-bottom: var(--spacing-lg);">
+                <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> <strong>Protagonismo e Agência:</strong> Foco em decisões conscientes.</li>
+                <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> <strong>Desenvolvimento Interseccional:</strong> Trajetória influenciada por múltiplos fatores contextuais.</li>
+                <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> <strong>Abordagem Diferenciada sem Essencialismo:</strong> Explorar desafios contextuais específicos sem reduzir a estereótipos.</li>
+                <li style="padding: 2px 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: 5px;"></i> <strong>Comunicação Alinhada e Positiva:</strong> Evitar linguagem de "problema a resolver".</li>
+            </ul>
+            
+            <h4 style="margin-bottom: var(--spacing-md);">Estrutura de Jornadas — Matriz de Públicos, Formatos e Entregáveis</h4>
+            <div class="table-container">
+                <table style="font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>Jornada</th>
+                            <th>Público-Alvo</th>
+                            <th>Tamanho</th>
+                            <th>Mentores</th>
+                            <th>Formato de Preparação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Liderança</strong></td>
+                            <td>Gerentes</td>
+                            <td>40</td>
+                            <td>Sim</td>
+                            <td>2 híbridas (até 2h)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mulheres</strong></td>
+                            <td>Especialistas e Coordenadoras</td>
+                            <td>44</td>
+                            <td>Sim</td>
+                            <td>A: gravado (3h) OU B: 2 híbridas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pessoas Negras</strong></td>
+                            <td>Espec., Coord., Analistas Sr.</td>
+                            <td>40</td>
+                            <td>Sim</td>
+                            <td>A: gravado (3h) OU B: 2 híbridas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pessoas LGBTQIA+</strong></td>
+                            <td>Coordenadores e Especialistas</td>
+                            <td>20</td>
+                            <td>Sim</td>
+                            <td>A: gravado (3h) OU B: 2 híbridas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pessoas com Deficiência</strong></td>
+                            <td>Espec., Coord., Analistas Sr.</td>
+                            <td>16</td>
+                            <td>Sim</td>
+                            <td>A: gravado (3h) OU B: 2 híbridas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Desenv. de Carreira</strong></td>
+                            <td>Analistas Sêniores</td>
+                            <td>20</td>
+                            <td>Sim</td>
+                            <td>A: gravado (3h) OU B: 2 híbridas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lideranças Gerais</strong></td>
+                            <td>Gestores diretos e indiretos</td>
+                            <td>~240</td>
+                            <td>Não</td>
+                            <td>2 webinars (Teams) + email</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md);">Estrutura do Programa por Fases</h4>
+            <div class="table-container">
+                <table style="font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>Fase</th>
+                            <th>Público-Alvo</th>
+                            <th>Responsáveis</th>
+                            <th>Foco Estratégico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fase 1 – Formação de Gestores</strong></td>
+                            <td>Gestores e líderes</td>
+                            <td>Suguino <br>Amanda Capucho</td>
+                            <td>Fortalecimento da gestão estratégica e preparação para níveis executivos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fase 2 – Formação de Mentores</strong></td>
+                            <td>Mentores do programa</td>
+                            <td>Ana Minuto <br>PF</td>
+                            <td>Estruturação de mentoria estratégica e desenvolvimento de carreira</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fase 3 – Formação de Mentorados</strong></td>
+                            <td>Profissionais mentorados</td>
+                            <td>Tamara <br>André</td>
+                            <td>Aceleração de carreira e protagonismo profissional</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fase 4 – Checkpoints Estratégicos</strong></td>
+                            <td>Participantes por grupos</td>
+                            <td>Noah, Mateus, Aline, Tamara, PF, Genesson</td>
+                            <td>Monitoramento, aprofundamento temático e fortalecimento de rede</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="chart-container animate-on-scroll" style="margin-top: var(--spacing-xl);">
+            <h4 class="chart-title">
+                <i class="fas fa-calendar-check"></i>
+                Timeline Visual do Programa
+            </h4>
+            <canvas id="timelineChart" style="max-height: 250px;"></canvas>
+        </div>
+    </section>
+
+    <!-- Arquitetura dos Encontros Section -->
+    <section class="section" id="arquitetura">
+        <div class="section-header">
+            <span class="section-number">6</span>
+            <h2 class="section-title">Arquitetura dos Encontros</h2>
+            <p class="section-subtitle">Estrutura geral de macro-encontros e trilhas</p>
+        </div>
+        <div class="card animate-on-scroll" style="margin-bottom: var(--spacing-xl);">
+            <p style="margin-bottom: var(--spacing-md);">O programa se organiza a partir dos seguintes <strong>macro-encontros e trilhas</strong>, que podem ser dimensionados conforme necessidade:</p>
+            <p style="font-size: 14px; color: var(--color-text-secondary);">Essas frentes operam de forma integrada, mas <strong>não dependem de uma cadência rígida</strong>, permitindo adaptações ao longo do ciclo.</p>
+        </div>
+        <div class="grid grid-2" style="gap: var(--spacing-lg);">
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md);">📋 Encontro de Abertura Institucional (Opcional)</h4>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Público:</strong> Todos os participantes</p>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Objetivo:</strong> Criar alinhamento conceitual, linguagem comum e clareza sobre o propósito do programa.</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary);"><strong>Conteúdos-chave:</strong> Contexto organizacional, lógica do programa, papéis de cada público, conexão entre carreira/decisões/processos.</p>
+            </div>
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md);">👥 Encontros com Mentorados</h4>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Público:</strong> Mentorados organizados por nível hierárquico</p>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Objetivo:</strong> Apoiar mentorados na leitura do seu momento de carreira e preparação para novos desafios.</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary);"><strong>Diretrizes:</strong> Conteúdos orientados a carreira, decisão, posicionamento, transições e visibilidade.</p>
+            </div>
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md);">🎯 Encontros com Mentores</h4>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Público:</strong> Mentores do programa</p>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Objetivo:</strong> Qualificar o papel do mentor para atuar com responsabilidade e escuta estruturada.</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary);"><strong>Diretrizes:</strong> Papel, limites, escuta qualificada, leitura de contexto, prevenção de dependência.</p>
+            </div>
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md);">⚡ Encontros com Gestores</h4>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Público:</strong> Gestores diretos e indiretos</p>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Objetivo:</strong> Apoiar gestores em decisões de desenvolvimento, avaliação e movimentação.</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary);"><strong>Diretrizes:</strong> Critérios de avaliação, feedbacks estruturados, decisões de promoção, gestão de expectativas.</p>
+            </div>
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md);">🔧 Encontros com RH (Opcional)</h4>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Público:</strong> Profissionais responsáveis por processos</p>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Objetivo:</strong> Capacitar áreas de desenvolvimento para revisar e sustentar processos mais claros.</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary);"><strong>Diretrizes:</strong> Identificação de vieses, revisão de critérios, alinhamento com discurso institucional.</p>
+            </div>
+            <div class="card animate-on-scroll">
+                <h4 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-md);">🎓 Encontro de Fechamento (Opcional)</h4>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Público:</strong> Todos os públicos envolvidos</p>
+                <p style="font-size: 14px; margin-bottom: var(--spacing-md);"><strong>Objetivo:</strong> Consolidar aprendizados, compartilhar resultados e alinhar próximos passos.</p>
+                <p style="font-size: 13px; color: var(--color-text-secondary);"><strong>Conteúdos:</strong> Síntese de aprendizados, impactos individuais/organizacionais, recomendações para próximos ciclos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe Section -->
+    <section class="section" id="equipe">
+        <div class="section-header">
+            <span class="section-number">7</span>
+            <h2 class="section-title">Equipe e Credenciais</h2>
+            <p class="section-subtitle">Profissionais especializados em desenvolvimento e diversidade</p>
+        </div>
+
+        <div class="grid grid-2" style="gap: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+            <div class="card animate-on-scroll">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <img src="assets/images/tamara-braga.jpg" alt="Tamara Braga"
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--divercidade-primary); box-shadow: var(--shadow-md);">
+                </div>
+                <h3 style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg); color: var(--divercidade-primary); justify-content: center;">
+                    <i class="fas fa-star"></i> Tamara Braga
+                </h3>
+                <h4 style="margin-bottom: var(--spacing-md); color: var(--color-text-primary); font-size: 16px; text-align: center;">Facilitadora Sênior em Programas de Diversidade e Inclusão</h4>
+                
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <p style="font-weight: 600; margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Formação Acadêmica:</p>
+                    <ul style="font-size: 14px; list-style: none;">
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Graduação em Engenharia Química — Universidade Federal Rural do Rio de Janeiro (UFRR), 2013</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ MBA em Sustentabilidade — Universidade Castelo Branco (UCB), 2018-2020</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Especialização em Cultura Organizacional e Liderança Inclusiva — Universidade Feevale, 2023-2024</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ MBA em ESG — Governança Corporativa Socioambiental — UNINTER, 2023-2025</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ MBA em Saúde Mental, Psicopatologia e Atenção Psicossocial — Descomplica, 2023-2024</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <p style="font-weight: 600; margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Experiência Profissional:</p>
+                    <ul style="font-size: 14px; list-style: none;">
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ <strong>9+ anos</strong> em implementação de programas de diversidade, equidade, inclusão, gestão da mudança, comunicação e saúde mental</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ <strong>Posição Atual:</strong> CEO da DiverCidade e Gerente de Projetos em Diversidade e ESG na Petrobras (desde novembro 2024)</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ <strong>Experiência prévia:</strong></li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Fundadora e CEO da DiverCidade: Liderança estratégica em gestão da mudança, desenvolvimento de lideranças inclusivas, palestrante em neurodiversidades, deficiência e LGBTQIAPN+</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Gerente Sênior de Cultura, Diversidade, Inclusão e Saúde Mental — Gupy</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Gerente de Diversidade e Inclusão — ONG ELLA</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Líder de Cultura e D&I — HEINEKEN</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Consultora Sênior de D&I — Vetor Brasil e Instituto Gesto</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Líder de Diversidade, Inclusão e Gestão da Mudança — Grupo Petrópolis</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Responsável pela implementação de acessibilidade em produtos — Whirlpool (Brastemp e Consul)</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <p style="font-weight: 600; margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Especialidades:</p>
+                    <ul style="font-size: 14px; list-style: none;">
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Gestão estratégica de contexto organizacional e mudança</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Diagnóstico de barreiras por recorte de diversidade</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Design e facilitação de programas de desenvolvimento com foco em equidade</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Análise de processos (avaliação, promoção, feedback) para mitigar vieses</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Liderança inclusiva e desenvolvimento de pessoas aliadas</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Saúde mental em contextos corporativos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card animate-on-scroll">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <img src="assets/images/paulo-rezende.jpg" alt="Paulo Rezende"
+                        style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--divercidade-primary); box-shadow: var(--shadow-md);">
+                </div>
+                <h3 style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg); color: var(--divercidade-primary); justify-content: center;">
+                    <i class="fas fa-star"></i> Paulo Rezende
+                </h3>
+                <h4 style="margin-bottom: var(--spacing-md); color: var(--color-text-primary); font-size: 16px; text-align: center;">Coordenador de Programas e Gestor de Projetos em Diversidade</h4>
+                
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <p style="font-weight: 600; margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Formação Acadêmica:</p>
+                    <ul style="font-size: 14px; list-style: none;">
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Bacharelado em Coaching em Desenvolvimento Humano - UniFCV, 2023</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Especialização em Planejamento de Carreira — UniFCV, 2022</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Pós-graduação em Sexualidade Humana - Instituto Zayn, 2023</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Especialização em Diversidades e Inclusão Social em Direitos Humanos — USP, 2022</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Política Nacional de Saúde Pública da População LGBTTQIA+ — UFRGS, 2019-2020</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Comunicação para Todos: Ferramentas e Recursos — UFRGS, 2021</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Educação Sexual, Saúde e Bem-estar — USP, 2024</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <p style="font-weight: 600; margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Experiência Profissional:</p>
+                    <ul style="font-size: 14px; list-style: none;">
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ <strong>10+ anos</strong> em comunicação, implementação e mensuração de programas de diversidade</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ <strong>Posição Atual:</strong> Chief Strategy and Marketing Officer (CSMO) da DiverCidade</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ <strong>Experiência prévia:</strong></li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Presidente da Uprise by DiverCidade</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Gestor de Projetos em Diversidade — DiverCidade</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Professor de Pós-Graduação — FAAP, 2023-2024</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Gestor de Projetos em Diversidade — SX Tools (Santander), 2023</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Gestor de Comunidade Tech e Diversidade — Base Social, 2023</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Diversity, Equity and Inclusion Specialist — Grupo EcoRodovias, 2021-2022</li>
+                        <li style="padding: var(--spacing-xs) 0; margin-left: var(--spacing-sm); color: var(--color-text-secondary);">&bull; Talent Acquisition — Ambev, 2020-2021</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: var(--spacing-lg);">
+                    <p style="font-weight: 600; margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Especialidades:</p>
+                    <ul style="font-size: 14px; list-style: none;">
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Coleta, análise e visualização de dados quantitativos e qualitativos</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Relatórios executivos com recomendações estratégicas</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Mensuração de ROI e impacto organizacional</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Programas de mentoria para líderes e empreendedores diversos</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Employer Branding e Branding Avançado</li>
+                        <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Letramento e capacitação em inclusão e cultura de diversidade</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: var(--spacing-xxl);">
+            <h3 style="margin-bottom: var(--spacing-lg); font-size: 22px; color: var(--divercidade-primary);">Facilitadores Especializados</h3>
+<div class="grid" style="gap: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <!-- Ana Minuto -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Ana Minuto
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-primary);">Fundadora e CEO da Minuto Consult Hol Empresarial</p>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Áreas de atuação: Liderança, Diversidade &amp; Inclusão (DEI), Comportamento Organizacional, Inteligência Artificial aplicada ao trabalho, Desenvolvimento de Carreira e Futuro do Trabalho.</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Ana Minuto é palestrante, consultora, mentora e estrategista com mais de 17 anos de experiência impactando diretamente mais de 7 milhões de pessoas e dezenas de milhares de profissionais em organizações e eventos.</p>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Ela atua na transformação de líderes e equipes por meio de palestras, treinamentos, coaching, mentorias e consultorias empresariais, integrando temas como liderança humanizada, diversidade estratégica, inteligência emocional, inovação e as implicações da tecnologia (inclusive IA) no trabalho e nas carreiras.</p>
+                    </div>
+                </div>
+                <!-- André Alves -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>André Alves
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Diretor Operacional e Especialista em Recrutamento e Seleção Diverso e Inclusivo na Empodera</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">André Alves é um profissional com mais de 20 anos de experiência no mercado de trabalho, com sólida atuação na área de logística e recursos humanos, especialmente em recrutamento e seleção com foco em diversidade e inclusão. Ao longo da sua carreira, desenvolveu competências em operações organizacionais, gestão de processos e desenvolvimento de práticas de RH que promovem uma cultura mais diversa e inclusiva dentro das empresas.</p>
+                    </div>
+                </div>
+                <!-- Aline Messias -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Aline Messias
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Áreas de atuação: Diversidade e inclusão, inovação social, protagonismo de pessoas com deficiência, educação corporativa, comunicação e palestras de impacto social.</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Aline Messias é uma profissional e influenciadora dedicada à promoção da diversidade e inclusão, com foco especial na pauta de pessoas com deficiência (PcD). Ela é reconhecida por liderar iniciativas de impacto social, advocacy e engajamento corporativo, contribuindo para transformar culturas organizacionais e ampliar espaços de participação para grupos historicamente minorizados.</p>
+                    </div>
+                </div>
+                <!-- Mateus Fernandes -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Mateus Fernandes
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Áreas de atuação: Advocacy em justiça climática, engajamento social, comunicação sobre desigualdades e impacto comunitário, palestras e ativismo social.</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Mateus Fernandes é influenciador, palestrante e ativista comprometido com temas de justiça climática, desigualdades sociais e protagonismo de comunidades periféricas. Seu trabalho combina comunicação estratégica, mobilização social e advocacy para destacar como as populações mais vulneráveis são impactadas por questões ambientais, sociais e políticas, buscando trazer voz e visibilidade a pautas frequentemente marginalizadas.</p>
+                    </div>
+                </div>
+                <!-- Léo Kaufmann -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Léo Kaufmann
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Cargo atual: CEO e Diretor de Conteúdo / Curador do RH Summit</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Léo Kaufmann é líder, influenciador e estrategista de recursos humanos com ampla atuação no desenvolvimento de diálogos sobre o mundo do trabalho, cultura organizacional, liderança e inclusão. Como CEO e curador do RH Summit — considerado um dos maiores eventos híbridos de RH da América Latina — ele combina conhecimento profundo de mercado com uma comunicação autêntica e acessível, ampliando o impacto sobre profissionais e organizações.</p>
+                    </div>
+                </div>
+                <!-- Mauro Wainstock -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Mauro Wainstock
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Áreas de atuação: Recursos Humanos, diversidade etária e intergeracional, comunicação corporativa, cultura organizacional, liderança, consultoria, mentoria e palestras.</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Mauro Wainstock é um consultor, professor e palestrante com mais de 30 anos de experiência profissional, com trajetória marcada por atuação em comunicação corporativa, marketing e gestão de pessoas. Especializado em temas como diversidade etária, integração geracional e cultura organizacional, ele combina prática e reflexão para apoiar líderes e organizações em seus desafios de transformação cultural e gestão de talentos.</p>
+                    </div>
+                </div>
+                <!-- Noah Scheffel -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Noah Scheffel
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Cargo atual: CEO e Fundador do EducaTRANSforma</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Noah Scheffel é um agente de transformação social, consultor em diversidade e inclusão e empreendedor com foco em tecnologia, pessoas e cultura organizacional. Ele é reconhecido como o primeiro homem trans influenciador do LinkedIn no Brasil, e vem construindo influência e impacto por meio de sua atuação em temas que conectam inclusão social, empregabilidade e inovação.</p>
+                    </div>
+                </div>
+                <!-- Genesson Honorato -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Genesson Honorato
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Áreas de atuação: Gestão de pessoas, RH estratégico, diversidade e inclusão, inovação organizacional, liderança, comunicação e palestras motivacionais.</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Genesson Honorato é psicólogo, consultor, professor, mentor e palestrante TEDx com ampla atuação nas áreas de Recursos Humanos, inovação, diversidade e inclusão. Conhecido como uma das vozes influentes em estratégias de gestão de pessoas no Brasil, ele combina uma formação sólida em psicologia e inovação com experiências práticas em grandes organizações e no desenvolvimento de projetos que conectam cultura organizacional, tecnologia e comportamento humano.</p>
+                    </div>
+                </div>
+                <!-- Suguino Sidnei -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Suguino Sidnei
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Áreas de atuação: Estratégia empresarial, scale-up rentável, Supply Chain, Vendas, Operações, Pós-vendas, Finanças e Transformação de Negócios.</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Suguino Sidnei é um executivo brasileiro com mais de 18 anos de experiência no setor de bens de consumo, com trajetória consolidada em operações complexas, crescimento sustentável e liderança multifuncional. Atualmente é CEO da B.blend, joint venture entre Ambev e Whirlpool, onde lidera estratégia, vendas e operações com foco em scale-up rentável, inovação de portfólio e excelência em execução.</p>
+                    </div>
+                </div>
+                <!-- Amanda Capucho -->
+                <div class="card animate-on-scroll">
+                    <h3 style="color: var(--divercidade-primary); margin-bottom: var(--spacing-sm); font-size: 20px;">
+                        <i class="fas fa-user-circle" style="margin-right: var(--spacing-sm);"></i>Amanda Capucho
+                    </h3>
+                    <p style="font-weight: 600; font-size: 14px; color: var(--color-text-primary);">Áreas de atuação: Liderança estratégica, gestão de negócios, operações, marketing, vendas e desenvolvimento organizacional.</p>
+                    <button class="member-toggle-btn" onclick="toggleMember(this)" aria-expanded="false">
+                        <span>Ver mais</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="member-body">
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Resumo Executivo</h4>
+                        <p style="font-size: 14px; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Amanda Capucho é executiva com mais de 25 anos de carreira liderando operações nos setores de bens de consumo e varejo tanto no Brasil quanto em organizações multinacionais. Atualmente é Amanda Dias Capucho, atuando como Diretora-Geral do Campari Group no Brasil, onde responde pela liderança de negócios no país e pela integração de estratégias comerciais, operacionais e de cultura organizacional em um mercado complexo e em transformação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Investimento Section -->
+    <section class="section" id="investimento">
+        <div class="section-header">
+            <span class="section-number">8</span>
+            <h2 class="section-title">Investimento e Configuração de Pacotes</h2>
+            <p class="section-subtitle">Monte Seu Programa: Formato Online e Arquitetura Modular por Turmas</p>
+        </div>
+
+        <div class="calculator-grid animate-on-scroll">
+            <div class="calculator-main">
+                <div class="phases-fixed card">
+                    <h3><i class="fas fa-lock"></i> Núcleo Fixo (Essencial)</h3>
+                    <p style="font-size: 14px; margin-bottom: var(--spacing-md); color: var(--color-text-secondary);">Escopo solicitado pela Globo – Fase 2: Desenvolvimento Estruturado. Inclui Formação de Pessoas Mentoras (2 híbridos), Preparação de Mentoradas (2 síncronos ou gravados), Lideranças (2 webinares) e Checkpoints contínuos.</p>
+                    <div class="phase-item">
+                        <div class="phase-info">
+                            <strong>Operação Integral + Relatório Executivo Final</strong>
+                            <span>Aceleração, liderança, monitoramento, sustentação e indicadores.</span>
+                        </div>
+                        <span class="phase-price" style="white-space: nowrap;">R$&nbsp;515.000</span>
+                    </div>
+                </div>
+
+                <div class="phases-variable card">
+                    <h3><i class="fas fa-sliders-h"></i> Módulos Estratégicos (Opcionais)</h3>
+                    <p style="font-size: 14px; margin-bottom: var(--spacing-md);">Ampliação de impacto e governança. Adicione ao pacote base.</p>
+                    <div class="modules-grid">
+                        <div class="module-card" data-module="analise">
+                            <div class="module-header">
+                                <div>
+                                    <strong>Análise Inicial Pré-Ciclo</strong>
+                                    <span class="module-price">Diagnóstico estruturado e alinhamento</span>
+                                </div>
+                            </div>
+                            <div class="module-controls">
+                                <button class="module-btn minus" aria-label="Remover">-</button>
+                                <span class="module-count">0</span>
+                                <button class="module-btn plus" aria-label="Adicionar">+</button>
+                                <span class="module-total">R$ 0</span>
+                            </div>
+                        </div>
+                        <div class="module-card" data-module="dashboard">
+                            <div class="module-header">
+                                <div>
+                                    <strong>Dashboard & Inteligência</strong>
+                                    <span class="module-price">Integração com decisões de carreira</span>
+                                </div>
+                            </div>
+                            <div class="module-controls">
+                                <button class="module-btn minus" aria-label="Remover">-</button>
+                                <span class="module-count">0</span>
+                                <button class="module-btn plus" aria-label="Adicionar">+</button>
+                                <span class="module-total">R$ 0</span>
+                            </div>
+                        </div>
+                        <div class="module-card" data-module="abertura">
+                            <div class="module-header">
+                                <div>
+                                    <strong>Encontro de Abertura</strong>
+                                    <span class="module-price">Posicionamento e engajamento</span>
+                                </div>
+                            </div>
+                            <div class="module-controls">
+                                <button class="module-btn minus" aria-label="Remover">-</button>
+                                <span class="module-count">0</span>
+                                <button class="module-btn plus" aria-label="Adicionar">+</button>
+                                <span class="module-total">R$ 0</span>
+                            </div>
+                        </div>
+                        <div class="module-card" data-module="fechamento">
+                            <div class="module-header">
+                                <div>
+                                    <strong>Encontro de Fechamento</strong>
+                                    <span class="module-price">Consolidação de aprendizados</span>
+                                </div>
+                            </div>
+                            <div class="module-controls">
+                                <button class="module-btn minus" aria-label="Remover">-</button>
+                                <span class="module-count">0</span>
+                                <button class="module-btn plus" aria-label="Adicionar">+</button>
+                                <span class="module-total">R$ 0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculator-sidebar">
+                <div class="summary-card card">
+                    <img src="assets/images/logo-divercidade.png" alt="DiverCidade" class="summary-logo">
+                    <h4>Resumo do Investimento</h4>
+                    <div class="summary-row">
+                        <span>Núcleo Fixo (Essencial)</span>
+                        <span style="white-space: nowrap;">R$&nbsp;515.000</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Módulos Opcionais</span>
+                        <span id="variable-total">R$ 0</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-total">
+                        <span>INVESTIMENTO TOTAL</span>
+                        <span id="grand-total" style="white-space: nowrap;">R$&nbsp;515.000</span>
+                    </div>
+                    <button id="pdfBtn" class="btn btn-primary btn-block">
+                        <i class="fas fa-file-pdf"></i> Gerar PDF da Proposta
+                    </button>
+                    <button id="emailBtn" class="btn btn-secondary btn-block">
+                        <i class="fas fa-envelope"></i> Enviar por E-mail
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box animate-on-scroll" style="margin-bottom: var(--spacing-xl);">
+            <div class="highlight-box-title">
+                <i class="fas fa-lightbulb"></i>
+                Configurações Possíveis Sugeridas
+            </div>
+            <div class="grid grid-3" style="gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                <div style="background: var(--color-bg-primary); padding: var(--spacing-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); text-align: center;">
+                    <h4 style="color: var(--color-text-primary); margin-bottom: 5px;">Essencial</h4>
+                    <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 15px;">Escopo solicitado</p>
+                    <strong style="color: var(--divercidade-primary); font-size: 18px; white-space: nowrap;">R$&nbsp;515.000</strong>
+                </div>
+                <div style="background: var(--color-bg-primary); padding: var(--spacing-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); text-align: center; border: 2px solid var(--divercidade-orange);">
+                    <h4 style="color: var(--color-text-primary); margin-bottom: 5px;">Estratégico</h4>
+                    <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 15px;">Essencial + Análise Inicial + Dashboard</p>
+                    <strong style="color: var(--divercidade-orange); font-size: 18px; white-space: nowrap;">R$&nbsp;585.000</strong>
+                </div>
+                <div style="background: var(--color-bg-primary); padding: var(--spacing-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); text-align: center;">
+                    <h4 style="color: var(--color-text-primary); margin-bottom: 5px;">Premium</h4>
+                    <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 15px;">Estratégico + Abertura + Fechamento</p>
+                    <strong style="color: var(--divercidade-primary); font-size: 18px; white-space: nowrap;">R$&nbsp;690.000</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="card animate-on-scroll" style="margin-bottom: var(--spacing-xl); border-left: 4px solid var(--divercidade-purple);">
+            <h3 style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg); color: var(--divercidade-purple);">
+                <i class="fas fa-cog"></i> Logística e Integração
+            </h3>
+            
+            <div class="grid grid-2" style="gap: var(--spacing-lg);">
+                <div>
+                    <h4 style="margin-bottom: var(--spacing-md); color: var(--divercidade-primary);">Logística e Plataformas</h4>
+                    <ul style="list-style: none; font-size: 13px;">
+                        <li style="padding: var(--spacing-sm) 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i>Formato híbrido: sessões presenciais no RJ com transmissão via Teams (Globo confirma local e AV).</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i>Gravações: master em MP4, entregue via DiverCidade para upload.</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i>Plataforma: preferência pela plataforma da Globo.</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i>Custos de logística orçados separadamente salvo acordo em contrário.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: var(--spacing-md); color: var(--divercidade-primary);">Integração com o Programa (Mentoria Individual)</h4>
+                    <ul style="list-style: none; font-size: 13px;">
+                        <li style="padding: var(--spacing-sm) 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i><strong>Não substitui</strong> a mentoria interna existente.</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i>Atua como camada de aprofundamento.</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i>Alimenta a consolidação com dados qualitativos.</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i class="fas fa-check" style="color: var(--divercidade-orange); margin-right: var(--spacing-sm);"></i>Reforça a sustentação das decisões trabalhadas no coletivo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Próximos Passos Section -->
+    <section class="section" id="proximos-passos">
+        <div class="section-header">
+            <span class="section-number">9</span>
+            <h2 class="section-title">Próximos Passos</h2>
+            <p class="section-subtitle">Confirmação de Formato e Alinhamento</p>
+        </div>
+
+        <div class="card animate-on-scroll">
+            <p style="margin-bottom: var(--spacing-lg);">Conforme direcionamento recebido via e-mail, solicitamos:</p>
+            <div class="grid grid-2" style="gap: var(--spacing-xl);">
+                <div style="display: flex; align-items: flex-start; gap: var(--spacing-md);">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--divercidade-primary); color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 18px;">1</div>
+                    <div>
+                        <h4 style="margin-bottom: var(--spacing-sm);">Validação da Estrutura de Jornadas</h4>
+                        <p style="font-size: 14px; color: var(--color-text-secondary);">Confirmar que a matriz apresentada (6 jornadas, 180 participantes) reflete a estratégia esperada para o Ciclo 4.</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: var(--spacing-md);">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--divercidade-primary); color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 18px;">2</div>
+                    <div>
+                        <h4 style="margin-bottom: var(--spacing-sm);">Escolha de Formato para Mentoradas</h4>
+                        <p style="font-size: 14px; color: var(--color-text-secondary);">Confirmar Opção A (Módulos gravados), Opção B (Turmas híbridas) ou Mista por jornada.</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: var(--spacing-md);">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--divercidade-primary); color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 18px;">3</div>
+                    <div>
+                        <h4 style="margin-bottom: var(--spacing-sm);">Validação de Abordagem de Conteúdo</h4>
+                        <p style="font-size: 14px; color: var(--color-text-secondary);">Confirmar princípios orientadores (protagonismo, abordagem positiva, foco em carreira).</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: var(--spacing-md);">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--divercidade-primary); color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 18px;">4</div>
+                    <div>
+                        <h4 style="margin-bottom: var(--spacing-sm);">Cronograma e Marcos</h4>
+                        <p style="font-size: 14px; color: var(--color-text-secondary);">Definir datas de início, encerramento, abertura e checkpoints.</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: var(--spacing-md);">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--divercidade-primary); color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 18px;">5</div>
+                    <div>
+                        <h4 style="margin-bottom: var(--spacing-sm);">Confirmação de Budget</h4>
+                        <p style="font-size: 14px; color: var(--color-text-secondary);">Com base na estrutura validada, confirmar proposta de valor e investimento.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: var(--spacing-xl);">
+                <div class="highlight-box-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    Timeline para Próximas Ações
+                </div>
+                <ul style="font-size: 14px; list-style: none;">
+                    <li style="padding: var(--spacing-xs) 0;"><strong>23/02/2026:</strong> Reunião de validação desta proposta V5 e confirmação das escolhas acima</li>
+                    <li style="padding: var(--spacing-xs) 0;"><strong>Semanas seguintes:</strong> Elaboração de cronograma detalhado, ajustes finais e assinatura de termo de engajamento</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">
+                    <span>DiverCidade</span>
+                </div>
+                <p class="footer-description">
+                    Transformando desenvolvimento de pessoas em sistemas sustentáveis de diversidade, equidade e inclusão.
+                </p>
+                <p style="font-size: 12px; opacity: 0.6; margin-top: var(--spacing-lg);">
+                    <strong>Contato Geral:</strong> contato@divercidade.net
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-title">Contatos Diretos</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:tamara@divercidade.net">Tamara</a></li>
+                    <li><a href="mailto:Paulo@divercidade.net">Paulo</a></li>
+                    <li><a href="mailto:contato@divercidade.net">Geral</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Telefone</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+5519920010580">+55 19 920 010 580</a></li>
+                    <li><a href="tel:+551998979797">+55 19 98979-7970</a></li>
+                    <li><a href="tel:+551999883728">+55 19 99883-7282</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Siga-nos</h4>
+                <ul class="footer-links">
+                    <li><a href="https://instagram.com/divercidade_hub" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="https://linkedin.com/company/divercidade" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="https://www.divercidade.net" target="_blank"><i class="fas fa-globe"></i> Website</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 DiverCidade. Todos os direitos reservados.</p>
+            <p>Proposta comercial — Globo + DiverCidade — Versão 5</p>
+        </div>
+    </footer>
+
+    <script>
+        const THEME_KEY = 'divercidade-theme';
+
+        function applyTheme(theme, { skipStorage = false } = {}) {
+            const isDark = theme === 'dark';
+            document.body.classList.toggle('dark', isDark);
+
+            const toggleBtn = document.getElementById('themeToggle');
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-pressed', String(isDark));
+            }
+
+            if (!skipStorage) {
+                try { localStorage.setItem(THEME_KEY, theme); } catch (e) { }
+            }
+
+            const computed = getComputedStyle(document.body);
+            const textColor = computed.getPropertyValue('--color-text-primary').trim();
+            const bgPrimary = computed.getPropertyValue('--color-bg-primary').trim() || (isDark ? '#1a1a2e' : '#FFFFFF');
+
+            if (window.__CHARTS__) {
+                Chart.defaults.color = textColor || '#212121';
+                if (Chart.defaults.plugins && Chart.defaults.plugins.legend && Chart.defaults.plugins.legend.labels) {
+                    Chart.defaults.plugins.legend.labels.color = textColor || '#212121';
+                }
+
+                if (window.__CHARTS__.participantsChart) {
+                    const c = window.__CHARTS__.participantsChart;
+                    c.data.datasets.forEach(ds => {
+                        ds.borderColor = bgPrimary;
+                    });
+                    c.update();
+                }
+
+                if (window.__CHARTS__.timelineChart) {
+                    const c = window.__CHARTS__.timelineChart;
+                    c.options.plugins.legend.labels.color = textColor;
+                    c.update();
+                }
+            }
+        }
+
+        (function initThemeOnLoad() {
+            let theme = 'light';
+            try {
+                const stored = localStorage.getItem(THEME_KEY);
+                if (stored === 'dark' || stored === 'light') {
+                    theme = stored;
+                } else {
+                    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    theme = prefersDark ? 'dark' : 'light';
+                }
+            } catch (e) {
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                theme = prefersDark ? 'dark' : 'light';
+            }
+            applyTheme(theme, { skipStorage: true });
+        })();
+
+        document.getElementById('themeToggle').addEventListener('click', function () {
+            const isDark = document.body.classList.contains('dark');
+            const next = isDark ? 'light' : 'dark';
+            applyTheme(next);
+        });
+
+        window.addEventListener('scroll', function () {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (docHeight > 0) ? (scrollTop / docHeight) * 100 : 0;
+            const pb = document.getElementById('progressBar');
+            if (pb) pb.style.width = scrollPercent + '%';
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+        window.toggleAccordion = toggleAccordion;
+
+        function toggleMember(btn) {
+            const body = btn.nextElementSibling;
+            const isOpen = body.classList.toggle('open');
+            btn.classList.toggle('open', isOpen);
+            btn.setAttribute('aria-expanded', String(isOpen));
+            btn.querySelector('span').textContent = isOpen ? 'Ver menos' : 'Ver mais';
+        }
+        window.toggleMember = toggleMember;
+
+        document.getElementById('navToggle').addEventListener('click', function () {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        window.__CHARTS__ = window.__CHARTS__ || {};
+
+        function cssVar(name) {
+            return getComputedStyle(document.body).getPropertyValue(name).trim();
+        }
+
+        const ctx1 = document.getElementById('participantsChart').getContext('2d');
+        const participantsChart = new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Liderança', 'Mulheres', 'Pessoas Negras', 'LGBTQIA+', 'Pessoas com Deficiência', 'Desenv. Carreira'],
+                datasets: [{
+                    data: [40, 44, 40, 20, 16, 20],
+                    backgroundColor: ['#E91E8C', '#FF6B35', '#00C9A7', '#4361EE', '#7B2CBF', '#FFD23F'],
+                    borderColor: cssVar('--color-bg-primary') || '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 13 }, padding: 15, color: cssVar('--color-text-primary') || '#212121' }
+                    }
+                }
+            }
+        });
+        window.__CHARTS__.participantsChart = participantsChart;
+
+        const ctx4 = document.getElementById('timelineChart').getContext('2d');
+        const timelineChart = new Chart(ctx4, {
+            type: 'bar',
+            data: {
+                labels: ['Etapa 1: Diagnóstico', 'Etapa 2: Desenv. Coletivo', 'Etapa 3: Consolidação', 'Etapa 4: Sustentação'],
+                datasets: [{
+                    label: 'Meses de Duração',
+                    data: [1, 8, 2, 1],
+                    backgroundColor: ['#E91E8C', '#FF6B35', '#00C9A7', '#4361EE'],
+                    borderRadius: 4,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        stacked: true,
+                        ticks: { callback: function (value) { return value + ' mês(es)'; }, color: cssVar('--color-text-secondary') || '#5F6368' }
+                    },
+                    y: {
+                        ticks: { color: cssVar('--color-text-secondary') || '#5F6368' }
+                    }
+                }
+            }
+        });
+        window.__CHARTS__.timelineChart = timelineChart;
+
+        (function syncChartsToThemeOnInit() {
+            setTimeout(() => {
+                const stored = (function () {
+                    try { return localStorage.getItem(THEME_KEY); }
+                    catch (e) { return null; }
+                })();
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const initial = stored === 'dark' || stored === 'light' ? stored : (prefersDark ? 'dark' : 'light');
+                applyTheme(initial, { skipStorage: true });
+            }, 80);
+        })();
+
+        document.getElementById('themeToggle').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+
+        (function () {
+            const formatMoney = window.formatMoney || function (value) {
+                return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value).replace(/\s/g, '\u00A0');
+            };
+
+            const Calculator = {
+                prices: { analise: 70000, dashboard: 70000, abertura: 45000, fechamento: 45000 },
+                fixedTotal: 515000,
+                counts: { analise: 0, dashboard: 0, abertura: 0, fechamento: 0 },
+
+                init: function () { this.cacheElements(); this.bindEvents(); this.updateAllTotals(); },
+                cacheElements: function () {
+                    this.modules = document.querySelectorAll('.module-card');
+                    this.variableTotalEl = document.getElementById('variable-total');
+                    this.grandTotalEl = document.getElementById('grand-total');
+                },
+                bindEvents: function () {
+                    const self = this;
+                    this.modules.forEach(function (module) {
+                        const minusBtn = module.querySelector('.module-btn.minus');
+                        const plusBtn = module.querySelector('.module-btn.plus');
+                        if (minusBtn) minusBtn.addEventListener('click', function () { self.decrement(module.dataset.module); });
+                        if (plusBtn) plusBtn.addEventListener('click', function () { self.increment(module.dataset.module); });
+                    });
+
+                    document.querySelectorAll('.module-btn').forEach(function (btn) {
+                        btn.addEventListener('click', function () { btn.style.transform = 'scale(0.95)'; setTimeout(function () { btn.style.transform = ''; }, 120); });
+                    });
+                },
+                increment: function (moduleType) { 
+                    if (this.counts[moduleType] !== undefined && this.counts[moduleType] < 1) { 
+                        this.counts[moduleType]++; 
+                        this.updateModuleDisplay(moduleType); 
+                        this.calculateTotals(); 
+                    } 
+                },
+                decrement: function (moduleType) { 
+                    if (this.counts[moduleType] !== undefined && this.counts[moduleType] > 0) { 
+                        this.counts[moduleType]--; 
+                        this.updateModuleDisplay(moduleType); 
+                        this.calculateTotals(); 
+                    } 
+                },
+                updateModuleDisplay: function (moduleType) {
+                    const module = document.querySelector('.module-card[data-module="' + moduleType + '"]');
+                    if (!module) return;
+                    const countEl = module.querySelector('.module-count');
+                    const totalEl = module.querySelector('.module-total');
+                    if (countEl) countEl.textContent = this.counts[moduleType];
+                    if (totalEl) totalEl.textContent = formatMoney(this.counts[moduleType] * this.prices[moduleType]);
+                },
+                updateAllTotals: function () { const self = this; Object.keys(this.counts).forEach(function (k) { self.updateModuleDisplay(k); }); this.calculateTotals(); },
+                calculateTotals: function () { 
+                    let variableTotal = 0; 
+                    Object.keys(this.counts).forEach(function (k) { variableTotal += this.counts[k] * this.prices[k]; }, this); 
+                    const grandTotal = this.fixedTotal + variableTotal; 
+                    if (this.variableTotalEl) this.variableTotalEl.textContent = formatMoney(variableTotal); 
+                    if (this.grandTotalEl) this.grandTotalEl.textContent = formatMoney(grandTotal); 
+                }
+            };
+
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { Calculator.init(); setupButtons(); });
+            else { Calculator.init(); setupButtons(); }
+
+            function setupButtons() {
+                const pdfBtn = document.getElementById('pdfBtn');
+                if (pdfBtn) {
+                    pdfBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        window.print();
+                    });
+                }
+
+                const emailBtn = document.getElementById('emailBtn');
+                if (emailBtn) {
+                    emailBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const subject = encodeURIComponent('Proposta Comercial - Programa de Desenvolvimento de Pessoas Diversas - DiverCidade para Globo');
+                        const grandTotal = document.getElementById('grand-total') ? document.getElementById('grand-total').textContent.trim() : '';
+                        
+                        const bodyText = [
+                            'Olá,',
+                            '',
+                            'Segue em anexo a proposta comercial para o Programa Anual de Desenvolvimento de Pessoas Diversas.',
+                            '',
+                            grandTotal ? ('Investimento total: ' + grandTotal) : 'Investimento: Configurável conforme escopo',
+                            '',
+                            'Detalhes completos: ' + window.location.href,
+                            '',
+                            'Fico à disposição para esclarecer dúvidas ou ajustar conforme necessário.',
+                            '',
+                            'Atenciosamente,',
+                            'Equipe DiverCidade'
+                        ];
+                        
+                        const body = encodeURIComponent(bodyText.join('\n'));
+                        const mailtoLink = 'mailto:contato@divercidade.net?subject=' + subject + '&body=' + body;
+                        window.location.href = mailtoLink;
+                    });
+                }
+            }
+
+            window.Calculator = Calculator;
+        })();
+    </script>
+</body>
+</html>
