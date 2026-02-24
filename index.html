@@ -534,6 +534,31 @@
             border-color: var(--divercidade-primary);
             color: var(--divercidade-primary);
         }
+        /* ===== NAV / THEME TOGGLE DARK MODE FIX =====
+           Ensure the top navigation uses a dark translucent background and
+           that the theme toggle has proper contrast in dark mode. This
+           fixes readability when switching between light/dark themes. */
+        body.dark .nav {
+            background: rgba(18, 18, 18, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Keep logo visible on dark nav */
+        body.dark .nav-logo { color: var(--divercidade-primary); }
+
+        /* Theme toggle adapts to dark background */
+        body.dark .theme-toggle {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--color-text-primary);
+        }
+        body.dark .theme-toggle:hover { background: rgba(255, 255, 255, 0.06); }
+
+        /* Ensure mobile menu toggle bars are visible on dark nav */
+        body.dark .nav-toggle span { background: var(--color-text-primary); }
+
     </style>
 </head>
 
@@ -1282,7 +1307,7 @@
                             <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Uso do Instagram para amplificar narrativas sobre desigualdade e direitos humanos</li>
                             <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Participação em atividades, eventos e conversas públicas sobre sustentabilidade</li>
                         </ul>
-                        <h4 style="font-size; margin-top:: 16px var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Especialidades</h4>
+                        <h4 style="font-size: 16px; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); color: var(--divercidade-primary);">Especialidades</h4>
                         <ul style="font-size: 14px; list-style: none; margin-bottom: var(--spacing-md);">
                             <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Justiça Climática e Sustentabilidade</li>
                             <li style="padding: var(--spacing-xs) 0; color: var(--color-text-secondary);">✓ Engajamento e Mobilização Social</li>
